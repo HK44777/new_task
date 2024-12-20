@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Task</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            height: 100vh;
+            margin: 0;
+            background: linear-gradient(135deg, #ffffff 25%, #f0f0f0 100%);
+            font-family: 'Poppins', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .form-container {
+            width: 100%;
+            max-width: 500px;
+            padding: 20px;
+            background: #ffffff;
+            border-radius: 16px;
+            box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .form-title {
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: #333333;
+        }
+
+        .form-label {
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: #555555;
+        }
+
+        .btn-primary {
+            background-color: #319B77;
+            border-color: #319B77;
+            font-weight: 600;
+        }
+        .form-control:focus {
+    border-color: #319B77; 
+    box-shadow: 0 0 0 4px rgba(49, 155, 119, 0.25); 
+    outline: none;
+}
+        .btn-primary:hover {
+            background-color: #319B77;
+            border-color: #319B77;
+        }
+
+        .form-control,
+        .form-select {
+            border-radius: 8px;
+        }
+
+        .form-range {
+            width: calc(100% - 50px);
+        }
+
+        .slider-value {
+            font-weight: 600;
+            color: #333333;
+        }
+
+        .alert {
+            margin-top: 1rem;
+        }
+        .dropdown-menu .dropdown-item {
+        background-color: white; 
+        color: #333; 
+        transition: background-color 0.3s ease;
+    }
+
+    .dropdown-menu .dropdown-item:hover {
+        background-color: #319B77; 
+        color: white; 
+    }
+
+    .dropdown-menu .dropdown-item:focus {
+        background-color: #287156; 
+        color: white;
+    }
+    .form-select:focus {
+    border-color: #319B77;
+    box-shadow: 0 0 0 4px rgba(49, 155, 119, 0.25); 
+    outline: none;
+}
+    </style>
+</head>
+
+<body>
+    <div class="form-container">
+        <h3 class="form-title">Add a New Task</h3>
+        <form method="POST" class="needs-validation" novalidate>
+            {{ form.hidden_tag() }}
+
+            <!-- Task Name -->
+            <div class="mb-4 text-start">
+                <label for="name" class="form-label">{{ form.name.label }}</label>
+                {{ form.name(class="form-control", id="name") }}
+                {% for error in form.name.errors %}
+                <div class="text-danger small">{{ error }}</div>
+                {% endfor %}
+            </div>
+
+            <!-- List Selection -->
+            <div class="mb-4 text-start">
+                <label for="list_name" class="form-label">{{ form.list_name.label }}</label>
+                {{ form.list_name(class="form-select", id="list_name") }}
+                {% for error in form.list_name.errors %}
+                <div class="text-danger small">{{ error }}</div>
+                {% endfor %}
+            </div>
+
+            <!-- Deadline Date -->
+            <div class="mb-4 text-start">
+                <label for="deadline_date" class="form-label">{{ form.deadline_date.label }}</label>
+                {{ form.deadline_date(class="form-control", id="deadline_date") }}
+                {% for error in form.deadline_date.errors %}
+                <div class="text-danger small">{{ error }}</div>
+                {% endfor %}
+            </div>
+
+            <!-- Deadline Time -->
+            <div class="mb-4 text-start">
+                <label for="deadline_time" class="form-label">{{ form.deadline_time.label }}</label>
+                {{ form.deadline_time(class="form-control", id="deadline_time") }}
+                {% for error in form.deadline_time.errors %}
+                <div class="text-danger small">{{ error }}</div>
+                {% endfor %}
+            </div>
+
+            <!-- Priority -->
+            <div class="mb-4 text-start">
+                <label for="priority" class="form-label">{{ form.priority.label }}</label>
+                <div class="d-flex align-items-center">
+                    {{ form.priority(class="form-range", id="priority", min=1, max=10, oninput="updateSliderValue(this.value)") }}
+                    <span id="slider-value" class="slider-value ms-2">5</span>
+                </div>
+                {% for error in form.priority.errors %}
+                <div class="text-danger small">{{ error }}</div>
+                {% endfor %}
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit" class="btn btn-primary w-100">{{ form.submit.label }}</button>
+        </form>
+
+        <!-- Flash Messages -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+        <div>
+            {% for category, message in messages %}
+            <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+                {{ message }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+        {% endwith %}
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- JavaScript to Update Slider Value -->
+    <script>
+        function updateSliderValue(value) {
+            document.getElementById('slider-value').textContent = value;
+        }
+    </script>
+</body>
+
+</html>

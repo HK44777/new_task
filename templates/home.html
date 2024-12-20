@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Hub</title>
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.9.1/font/bootstrap-icons.min.css" rel="stylesheet">
+
+    <style>
+        /* Custom CSS */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #e3f9e5;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        .hero-section {
+            background-color: #ffffff;
+            padding: 140px 0;
+            text-align: center;
+            border-bottom: 2px solid #9db2bf;
+        }
+
+        .hero-section h1 {
+            font-size: 3rem;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .hero-section p {
+            font-size: 1.2rem;
+            font-weight: 400;
+            color: #555;
+        }
+
+        .hero-section .btn {
+        background-color: #319B77;
+        color: #ffffff;
+        font-weight: 600;
+        padding: 12px 30px;
+        border: none;
+        border-radius: 5px;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .hero-section .btn:hover {
+        transform: scale(1.1); 
+        box-shadow: 0px 6px 12px rgba(49, 155, 119, 0.5); 
+        background-color: #27a06b; 
+    }
+
+        .features-section {
+            background-color: #e3f9e5;
+            padding: 60px 20px;
+        }
+
+        .feature {
+            display: flex;
+            align-items: center;
+            margin-bottom: 60px;
+            padding: 0 50px;
+        }
+
+        .feature:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        .feature h3 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        .feature p {
+            font-size: 1rem;
+            font-weight: 400;
+            color: #555;
+        }
+
+        .feature img {
+            width: 100%;
+            max-width: 400px;
+            border-radius: 8px;
+        }
+
+        .feature-text {
+            flex: 1;
+            padding: 0 20px;
+        }
+
+        .feature-image {
+            flex: 1;
+            text-align: center;
+        }
+        .feature img {
+    width: 100%;
+    max-width: 400px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(49, 155, 119, 0.5); /* Shadow with #319B77 */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.feature img:hover {
+    transform: scale(1.05); /* Slight zoom effect on hover */
+    box-shadow: 0px 8px 16px rgba(49, 155, 119, 0.7); /* Stronger shadow on hover */
+}
+
+        footer {
+            background-color: #ffffff;
+            color: #333;
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        footer .social-links a {
+            margin: 0 10px;
+            color: #333;
+            font-size: 1.5rem;
+            transition: color 0.3s ease;
+        }
+
+        footer .social-links a:hover {
+            color: #319B77;
+        }
+
+        footer p {
+            font-weight: 400;
+            margin: 10px 0 0;
+        }
+        
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <h1>Welcome to TaskHub</h1>
+            <p>Simplify Your Tasks, Track Your Progress, Achieve More.</p></br></br></b>
+            <a href="{{url_for('signup')}}" class="btn">Get Started</a>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features-section">
+        <div class="container">
+            <div class="feature">
+                <div class="feature-text">
+                    <h3>TaskHub Factor Sorting</h3>
+                    <p>A unique way that sorts tasks by urgency and importance, helping users prioritize better and work smarter.</p>
+                </div>
+                <div class="feature-image">
+                    <img src="static\Screenshot 2024-11-18 215744.png" alt="Feature 1">
+                </div>
+            </div>
+            <div class="feature">
+                <div class="feature-text">
+                    <h3>Export Tasks</h3>
+                    <p>Adds a professional touch by letting users back up or share their task lists in a CSV file, making it convenient for record-keeping or collaboration.</p>
+                </div>
+                <div class="feature-image">
+                    <img src="static\Screenshot 2024-11-18 221055.png" alt="Feature 2">
+                </div>
+            </div>
+            <div class="feature">
+                <div class="feature-text">
+                    <h3>Profile Insights</h3>
+                    <p>A personal dashboard that highlights user performance, showing streaks, task completion rates, and achievements, encouraging further engagement.</p>
+                </div>
+                <div class="feature-image">
+                    <img src="static/Screenshot 2024-11-18 221203.png" alt="Feature 3">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="social-links">
+            <a href="https://linkedin.com" target="_blank" title="LinkedIn"><i class="bi bi-linkedin"></i></a>
+            <a href="https://wa.me" target="_blank" title="WhatsApp"><i class="bi bi-whatsapp"></i></a>
+            <a href="https://instagram.com" target="_blank" title="Instagram"><i class="bi bi-instagram"></i></a>
+        </div>
+        <p>© 2024 Task Hub. All Rights Reserved.</p>
+    </div>
+</footer>
+
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.9.1/font/bootstrap-icons.min.js"></script>
+</body>
+</html>
